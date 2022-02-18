@@ -22,6 +22,9 @@
         <module>gulimall-ware</module>
         <!--添加人人开源后端模块-->
         <module>renren-fast</module>
+        <!--人人代码生成器-->
+        <module>renren-generator</module>
+        <module>gulimall-common</module>
     </modules>
 </project>
 
