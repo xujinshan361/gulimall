@@ -20,8 +20,8 @@
         <module>gulimall-product</module>
         <!--存储服务-->
         <module>gulimall-ware</module>
+        <!--添加人人开源后端模块-->
+        <module>renren-fast</module>
     </modules>
-
-
 </project>
 
