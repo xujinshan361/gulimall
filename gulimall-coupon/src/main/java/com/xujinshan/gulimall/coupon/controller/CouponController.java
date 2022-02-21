@@ -5,6 +5,8 @@ import java.util.Map;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import com.xujinshan.gulimall.coupon.entity.CouponEntity;
@@ -21,12 +23,16 @@ import com.xujinshan.common.utils.R;
  * @email xujinshan361@163.com
  * @date 2022-02-19 13:46:20
  */
+@RefreshScope // 配置中心动态获取
 @RestController
 @RequestMapping("coupon/coupon")
 public class CouponController {
     @Autowired
     private CouponService couponService;
-
+    @Value("${coupon.user.name}")
+    private String username;
+    @Value("${coupon.user.age}")
+    private Integer userage;
     // 增加接口，测试OpenFeign
     @GetMapping("/member/list")
     public R memeberCoupons(){//全系统的所有返回都返回R
@@ -34,6 +40,12 @@ public class CouponController {
         CouponEntity couponEntity = new CouponEntity();
         couponEntity.setCouponName("满100减10");//优惠券的名字
         return R.ok().put("coupons",Arrays.asList(couponEntity));
+    }
+
+    // 测试配置中心
+    @RequestMapping("/test")
+    public R test(){
+        return R.ok().put("username",username).put("usesage",userage);
     }
     /**
      * 列表
